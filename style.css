@@ -1,9 +1,0 @@
-body{margin:0;font-family:Arial;background:#050505;color:#fff}
-.bg{position:fixed;inset:0;background:radial-gradient(circle at top,#16203f,#050505 60%);z-index:-1}
-nav{display:flex;justify-content:space-between;padding:20px 8%;background:#0008;backdrop-filter:blur(8px)}
-a{color:#fff;text-decoration:none;margin:0 8px}
-.hero{height:80vh;display:grid;place-items:center;text-align:center}
-h1{font-size:5rem;text-shadow:0 0 20px #09f,0 0 40px #f06}
-.buttons a{padding:14px 22px;border:1px solid #09f;border-radius:40px}
-.card{margin:30px auto;max-width:900px;background:#ffffff10;padding:30px;border:1px solid #ffffff20;border-radius:18px;backdrop-filter:blur(12px)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;padding:20px}
