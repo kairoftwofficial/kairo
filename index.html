@@ -1,14 +1,295 @@
-<!DOCTYPE html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
-<title>KairoFTW Esports</title><link rel='stylesheet' href='style.css'></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOD Yt</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
+}
+
+body {
+    background: black;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Animated background */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,0,0,0.15), transparent 40%);
+    animation: moveBg 10s linear infinite;
+    z-index: -1;
+}
+
+@keyframes moveBg {
+    0% { transform: translate(-10%, -10%); }
+    50% { transform: translate(-20%, -15%); }
+    100% { transform: translate(-10%, -10%); }
+}
+
+/* HAMBURGER */
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.menu-btn span {
+    display: block;
+    width: 30px;
+    height: 4px;
+    background: red;
+    margin: 6px 0;
+    transition: 0.4s;
+    box-shadow: 0 0 10px red;
+}
+
+.menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+.menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* SIDE NAV */
+.side-nav {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background: black;
+    padding-top: 80px;
+    transition: 0.4s;
+    box-shadow: -5px 0 20px red;
+    z-index: 999;
+}
+
+.side-nav.active {
+    right: 0;
+}
+
+.side-nav a {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid #222;
+}
+
+.side-nav a:hover {
+    background: red;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.logo {
+    width: 200px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 25px red);
+    animation: float 3s ease-in-out infinite, glow 2s infinite alternate;
+}
+
+@keyframes float {
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes glow {
+    from { filter: drop-shadow(0 0 10px red); }
+    to { filter: drop-shadow(0 0 30px red); }
+}
+
+.hero p {
+    color: #ccc;
+    max-width: 600px;
+}
+
+/* SOCIAL */
+.social {
+    margin-top: 25px;
+}
+
+.icon-btn {
+    display: inline-flex;
+    width: 60px;
+    height: 60px;
+    border: 2px solid red;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    color: white;
+    font-size: 24px;
+    transition: 0.3s;
+}
+
+.icon-btn:hover {
+    background: red;
+    transform: scale(1.1);
+}
+
+/* SECTIONS */
+section {
+    padding: 60px 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h2 {
+    color: red;
+    margin-bottom: 20px;
+}
+
+/* ABOUT */
+.about p {
+    max-width: 700px;
+    margin: auto;
+    color: #ccc;
+}
+
+/* VIDEOS */
+iframe {
+    width: 90%;
+    max-width: 800px;
+    height: 400px;
+    margin-top: 20px;
+    border: 2px solid red;
+    box-shadow: 0 0 20px red;
+}
+
+/* FOOTER */
+footer {
+    background: #000;
+    padding: 20px;
+    border-top: 2px solid red;
+}
+
+footer i {
+    margin: 0 10px;
+    font-size: 22px;
+}
+</style>
+</head>
+
 <body>
-<div class='bg'></div>
-<nav><div class='logo'>KAIROFTW</div><div><a href='#about'>About</a><a href='#social'>Social</a></div></nav>
-<header class='hero'>
-<h1>KAIROFTW</h1><p>BGMI Player • Content Creator • Esports</p>
-<div class='buttons'><a>YouTube</a><a>Instagram</a><a>Discord</a><a>WhatsApp</a></div>
-</header>
-<section id='about' class='card'><h2>About</h2><p>Welcome to the battleground. This starter project is designed in an esports style and is ready for you to customize.</p></section>
-<section id='social' class='grid'>
-<div class='card'>YouTube</div><div class='card'>Instagram</div><div class='card'>Discord</div><div class='card'>WhatsApp</div>
+
+<!-- MENU -->
+<div class="menu-btn" id="menuBtn">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<nav class="side-nav" id="sideNav">
+    <a href="#">Home</a>
+    <a href="#about">About</a>
+    <a href="tournaments.html">Tournaments</a>
+    <a href="#videos">Videos</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <img src="logo.jpg" class="logo" alt="Logo">
+
+    <p>I am a gaming content creator. Follow me for gameplay videos, shorts, and tournaments 🔥</p>
+
+    <div class="social">
+        <a class="icon-btn" href="https://youtube.com/@rdngodyt?si=Uh4MbVxT6ECF4QM8" target="_blank">
+            <i class="fab fa-youtube"></i>
+        </a>
+
+        <a class="icon-btn" href="https://www.instagram.com/godyt_is_livee?igsh=cmZtemRiNWl5NWNm" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <h2>About Me</h2>
+    <p>
+        I am passionate about gaming and content creation. I create gameplay videos,
+        shorts, and entertaining content for my audience. I also host BGMI tournaments
+        like scrims, blasts, and prize matches.
+    </p>
 </section>
-<script src='script.js'></script></body></html>
+
+<!-- VIDEOS -->
+<section id="videos">
+    <h2>Latest Content</h2>
+    <iframe 
+        src="https://www.youtube.com/embed?listType=user_uploads&list=rdngodyt"
+        frameborder="0" 
+        allowfullscreen>
+    </iframe>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <i class="fab fa-youtube"></i>
+    <i class="fab fa-instagram"></i>
+</footer>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const sideNav = document.getElementById("sideNav");
+
+menuBtn.onclick = () => {
+    menuBtn.classList.toggle("active");
+    sideNav.classList.toggle("active");
+};
+
+// Close menu when clicking link
+document.querySelectorAll(".side-nav a").forEach(link => {
+    link.onclick = () => {
+        sideNav.classList.remove("active");
+        menuBtn.classList.remove("active");
+    };
+});
+
+// Scroll animation
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+    sections.forEach(sec => {
+        if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
+            sec.classList.add("show");
+        }
+    });
+});
+</script>
+
+</body>
+</html>
