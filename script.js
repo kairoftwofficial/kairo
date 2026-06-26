@@ -1,0 +1,1 @@
+document.querySelectorAll('.buttons a').forEach(b=>b.onmouseover=()=>b.style.boxShadow='0 0 20px cyan');
